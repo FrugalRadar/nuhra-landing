@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nuhra — Light when you need it most</title>
+  <meta name="description" content="Nuhra is a Bible verse guidance app that helps you find relevant scripture for life's moments. A product by Abide Labs.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #0F1B2D;
+      --accent: #C9A84C;
+      --text: #FFFFFF;
+      --text-muted: #E8E8E8;
+      --radius: 14px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* ── Nav ── */
+    nav {
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    nav img.logo {
+      height: 36px;
+      width: auto;
+    }
+
+    nav .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    /* ── Hero ── */
+    .hero {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 24px 80px;
+    }
+
+    .hero img.lockup {
+      width: 100%;
+      max-width: 480px;
+      height: auto;
+      margin-bottom: 40px;
+    }
+
+    .hero h1 {
+      font-size: clamp(24px, 5vw, 36px);
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 span.aramaic {
+      display: block;
+      font-size: clamp(16px, 3vw, 22px);
+      color: var(--accent);
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+
+    .hero p {
+      font-size: clamp(15px, 2.5vw, 18px);
+      color: var(--text-muted);
+      max-width: 480px;
+      margin-bottom: 40px;
+      line-height: 1.7;
+    }
+
+    /* ── Store Buttons ── */
+    .store-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 48px;
+    }
+
+    .store-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--text);
+      color: var(--bg);
+      padding: 12px 20px;
+      border-radius: var(--radius);
+      font-size: 14px;
+      font-weight: 500;
+      transition: opacity 0.15s ease;
+      cursor: pointer;
+    }
+
+    .store-btn:hover {
+      opacity: 0.85;
+      text-decoration: none;
+    }
+
+    .store-btn svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+
+    .store-btn .btn-text {
+      text-align: left;
+      line-height: 1.3;
+    }
+
+    .store-btn .btn-text small {
+      font-size: 10px;
+      font-weight: 400;
+      display: block;
+      opacity: 0.7;
+    }
+
+    /* ── Coming Soon Badge ── */
+    .coming-soon {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(201, 168, 76, 0.12);
+      color: var(--accent);
+      border: 1px solid rgba(201, 168, 76, 0.3);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    /* ── Features ── */
+    .features {
+      padding: 60px 24px;
+      max-width: 720px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    @media (min-width: 600px) {
+      .features {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .feature {
+      text-align: center;
+    }
+
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 12px;
+      border-radius: 12px;
+      background: rgba(201, 168, 76, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .feature-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: var(--accent);
+    }
+
+    .feature h3 {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .feature p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      height: 1px;
+      background: rgba(255, 255, 255, 0.08);
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    /* ── Footer ── */
+    footer {
+      padding: 32px 24px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-muted);
+      opacity: 0.6;
+    }
+
+    footer a {
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <img src="icon-navy.png" alt="Nuhra" class="logo" onerror="this.style.display='none'">
+    <div class="nav-right">
+      <span>A product by <a href="#">Abide Labs</a></span>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <img src="lockup-navy.png" alt="Nuhra" class="lockup" onerror="this.src='lockup-black.png'">
+
+    <h1>
+      <span class="aramaic">ܢܘܗܪܐ</span>
+      Light when you need it most
+    </h1>
+
+    <p>
+      Nuhra helps you find relevant Bible verses for life's moments —
+      from quiet morning reflections to difficult decisions.
+      Scripture guidance, grounded in tradition.
+    </p>
+
+    <div class="store-buttons">
+      <!-- App Store placeholder -->
+      <span class="store-btn">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+        </svg>
+        <span class="btn-text">
+          <small>Coming soon to the</small>
+          App Store
+        </span>
+      </span>
+
+      <!-- Google Play placeholder -->
+      <span class="store-btn">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M3.608 1.69L12 7.67l8.39-5.98A12.074 12.074 0 0012 0C9.802 0 7.718.907 6.004 2.423L3.608 1.69a.483.483 0 00-.239.01.48.48 0 00.01.96l2.577.724a11.594 11.594 0 012.05 1.353c.35.287.64.6.884.93.248.334.462.69.64 1.06a5.24 5.24 0 01.4 1.17c.073.315.11.64.11.97v.3a5.46 5.46 0 01-.11.98 5.25 5.25 0 01-.4 1.17c-.18.372-.392.726-.64 1.06a5.51 5.51 0 01-.884.93 5.54 5.54 0 01-1.05.64 5.27 5.27 0 01-1.17.4 5.27 5.27 0 01-.97.11h-.3a5.46 5.46 0 01-.98-.11 5.25 5.25 0 01-1.17-.4 5.51 5.51 0 01-1.06-.64 5.51 5.51 0 01-.93-.884 5.54 5.54 0 01-.64-1.05 5.27 5.27 0 01-.4-1.17 5.27 5.27 0 01-.11-.97v-.3c0-.33.037-.655.11-.97a5.24 5.24 0 01.4-1.17 5.25 5.25 0 01.64-1.06 5.51 5.51 0 01.93-.884 5.54 5.54 0 011.05-.64 5.27 5.27 0 011.17-.4 5.27 5.27 0 01.97-.11h.3c.33 0 .655.037.97.11.315.073.64.11.97.11a5.54 5.54 0 011.05.64 5.54 5.54 0 01.64 1.05 5.25 5.25 0 01.4 1.17c.073.315.11.64.11.97v.3c0 .33-.037.655-.11.97a5.24 5.24 0 01-.4 1.17 4.48 4.48 0 01-.64 1.06 4.45 4.45 0 01-.93.884 4.47 4.47 0 01-1.05.64 4.46 4.46 0 01-2.05.35c-.315 0-.63-.042-.94-.11l-2.577.724a.48.48 0 00-.01-.96.483.483 0 00.239.01zM12 7.67l-8.39 5.98A12.074 12.074 0 0012 24c1.198 0 2.282-.907 3.996-2.423l8.39 5.98a.483.483 0 00.239-.01.48.48 0 00-.01-.96l-8.39-5.98A12.074 12.074 0 0112 0a12.074 12.074 0 00-3.996 2.423L.01 7.64a.483.483 0 00.01.96.483.483 0 00.239-.01L8.39 7.67A12.074 12.074 0 0112 0c1.198 0 2.282.907 3.996 2.423L12 7.67z"/>
+          <path d="M.01.01h23.98v23.98H.01z" fill="none" stroke="currentColor" stroke-width="0" clip-path="url(#a)"/>
+          <path d="M20.11 10.74L12.7 14.9l-2.05-2.05-8.17 5.18A9.74 9.74 0 0012.7 24c1.198 0 2.282-.907 3.996-2.423l8.39 5.98a.483.483 0 00.239-.01.48.48 0 00-.01-.96l-8.39-5.98A12.074 12.074 0 0112 0a12.074 12.074 0 00-3.996 2.423L.01 7.64a.483.483 0 00.01.96.483.483 0 00.239-.01L8.39 7.67A12.074 12.074 0 0112 0c1.198 0 2.282.907 3.996 2.423L12 7.67l2.05-2.05 8.17 5.18A9.74 9.74 0 0024 12c0 1.198-.907 2.282-2.423 3.996z"/>
+        </svg>
+        <span class="btn-text">
+          <small>Coming soon to</small>
+          Google Play
+        </span>
+      </span>
+    </div>
+
+    <div class="coming-soon">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"/>
+        <polyline points="12,6 12,12 16,14"/>
+      </svg>
+      Launching soon — join the waitlist
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Features -->
+  <section class="features">
+    <div class="feature">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+        </svg>
+      </div>
+      <h3>Verse Guidance</h3>
+      <p>Enter what's on your mind and receive relevant scripture tailored to your situation.</p>
+    </div>
+
+    <div class="feature">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M4 19.5A2.5 2.5 0 016.5 17H20"/>
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>
+        </svg>
+      </div>
+      <h3>Scripture Context</h3>
+      <p>Read verses with historical and cultural notes that bring the text to life.</p>
+    </div>
+
+    <div class="feature">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+      </div>
+      <h3>Private & Thoughtful</h3>
+      <p>Your reflections stay with you. Nuhra is built to be a quiet companion, not a noisy tool.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 <a href="#">Abide Labs</a> &middot; <a href="#">Privacy</a></p>
+  </footer>
+
+</body>
+</html>
